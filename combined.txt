@@ -1,0 +1,60 @@
+You are a top-tier AI coding assistant. Your task is to generate a **complete, fully optimized multi-agent sports scraper project** with async agents, context managers, storage modules, and checkpointing. The project is designed for **Oracle Always Free** hosting and must include **all the following agents**:
+
+1. Popup Agent – activates only on page reload and popup appearance.
+2. League Agent – manages multiple leagues concurrently and coordinates their agents.
+3. Timer Agent – monitors pre-match timers, marking matches as LIVE or PENDING.
+4. Matchday Agent – collects all match data, including dropdown markets; starts next matchday odds when current matchday goes live; enforces pre-match odds cutoff (no retries when timer ≤ 10s).
+5. Live Matchday Agent – monitors live matches, collects goals and scoring times; confirms data using results tab.
+6. Results Agent – collects finalized match data from the results tab after matches end.
+7. Standings Agent – updates league standings after 5 matches, storing checkpointed data.
+
+### Project Requirements & Optimizations
+
+**Architecture & Execution:**
+- Fully async agents with independent retry sequences.
+- Agents operate **per league** without interfering with others.
+- PRE → LIVE → RESULT → STANDINGS state transitions.
+- Task queues and scheduler managed by a central **Planner module**.
+- Agents resume from last known state after failure or crash.
+
+**Browser & Stealth Optimizations:**
+- Single headless browser instance with **separate contexts per league**.
+- Asset blocking: images, CSS, fonts, unnecessary scripts.
+- Lazy loading for dropdown markets.
+- Tab reuse and minimized browser launches.
+- Stealth mode to reduce bot detection.
+
+**Data Storage & Checkpointing:**
+- JSON-based structured storage for matches, live data, results, and standings.
+- Optional Oracle Free DB integration for structured queries.
+- Batch writes to minimize I/O.
+- Deduplication to prevent repeated collection.
+- Periodic checkpointing to resume after crashes.
+
+**Failure Recovery:**
+- Independent retries per agent.
+- Automatic resume from last checkpoint.
+- Error logging with timestamps, match IDs, and agent names.
+- Optional notification hooks.
+
+**Performance:**
+- Low CPU/memory usage for Oracle Always Free.
+- Rate limiting to avoid server bans.
+- Efficient async scheduling for multiple leagues.
+
+### Deliverables:
+1. **Planner Module** – schedules tasks PRE → LIVE → RESULT per league with retry policies, queues, and checkpointing.
+2. **Executor Module** – launches all agents asynchronously, manages browser contexts, coordinates agent messaging, and writes data to storage.
+3. **Agent Skeletons** – fully modular async classes for each agent with placeholders for logic, retries, and checkpoints.
+4. **Storage Module** – handles JSON/Oracle Free DB reads/writes with batching and deduplication.
+5. **Context Managers** – manages browser lifecycle and league-specific contexts.
+6. **Logging Module** – tracks agent activity, retries, and failures.
+
+### Output Requirements:
+- Fully executable Python code scaffolding (async/await).
+- Modular code with clear comments for each component.
+- Ready-to-run on Oracle Always Free.
+- Optimized for speed, stealth, reliability, and minimal resource usage.
+- Include explicit inter-agent messaging contracts.
+- Include PRE → LIVE → RESULT → STANDINGS state diagram in code comments or documentation.
+- Include detailed examples of how to add a new league and new agent.

@@ -1,0 +1,26 @@
+You are a highly skilled AI coding assistant. Your task is to generate a detailed **Planner module** for a multi-agent sports scraper. The project is optimized for **Oracle Always Free**, **async concurrency**, **headless browser context isolation**, and **JSON/Oracle Free DB storage**.
+
+The Planner should:
+1. Schedule tasks for each league, including:
+   - Pre-match data collection (PRE)
+   - Live match monitoring (LIVE)
+   - Results verification (RESULT)
+   - Standings updates
+2. Assign each agent its own **task queue** and **retry sequence**.
+3. Respect pre-match deadlines (stop retries when timer ≤ 10s).
+4. Use async scheduling for concurrent execution of multiple leagues.
+5. Support checkpointing for crash recovery.
+6. Optimize for **speed, stealth, and low resource usage**:
+   - Minimize CPU/memory footprint
+   - Block unnecessary browser assets
+   - Use lazy loading of dropdown markets
+   - Reuse browser tabs and contexts
+7. Generate a structured plan output that includes:
+   - League ID
+   - Agent type (Timer, Matchday, Live, Results, Standings)
+   - Task schedule
+   - Retry policy
+   - Checkpointing info
+8. Include Python or Node.js code scaffolding with async tasks, placeholders for agent logic, and comments explaining each step.
+
+Output should be ready-to-run and fully modular so that each league can operate independently.

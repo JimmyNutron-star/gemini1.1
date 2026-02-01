@@ -1,0 +1,33 @@
+You are a highly skilled AI coding assistant. Your task is to generate an **Executor module** for a multi-agent sports scraper system designed by the Planner.
+
+The Executor should:
+1. Launch all agents asynchronously for each league:
+   - Popup Agent
+   - Timer Agent
+   - Matchday Agent
+   - Live Matchday Agent
+   - Results Agent
+   - Standings Agent
+2. Ensure **independent retry logic** for each agent without blocking others.
+3. Manage a **single headless browser instance** with separate **contexts per league**.
+4. Implement **DOM mutation observers** or polling to detect:
+   - Pre-match timer changes
+   - Match start
+   - Goals and results
+5. Collect data into **JSON files or Oracle Free DB** with checkpointing.
+6. Include **failure recovery and resume logic**:
+   - Resume agents from last PRE → LIVE → RESULT state
+   - Retry failed tasks independently
+   - Log errors and skipped matches
+7. Optimize for **Oracle Always Free**:
+   - Low CPU/memory usage
+   - Block unnecessary assets
+   - Reuse browser tabs
+   - Rate limit requests to avoid detection
+8. Include detailed comments and modular code placeholders for:
+   - Each agent’s internal logic
+   - Messaging between agents
+   - Data storage
+   - Planner integration
+
+Output should be a fully executable **scaffolding** with async agent runners, context managers, and storage modules, ready to integrate with the Planner.
